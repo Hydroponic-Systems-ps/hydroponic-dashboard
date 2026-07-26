@@ -2,7 +2,7 @@ async function loadData() {
   const { data, error } = await supabase
     .from("sensor_readings")
     .select("*")
-    .order("created_at", { ascending: false })
+    .order("reading_time", { ascending: false })
     .limit(1);
 
   if (error) {
@@ -16,7 +16,7 @@ async function loadData() {
     document.getElementById("ph").innerText = row.ph;
     document.getElementById("ec").innerText = row.ec + " mS/cm";
     document.getElementById("ppm").innerText = row.ppm;
-    document.getElementById("temp").innerText = row.temperature + " °C";
+    document.getElementById("temp").innerText = row.water_temp + " °C";
     document.getElementById("level").innerText = row.water_level + " L";
   }
 }
